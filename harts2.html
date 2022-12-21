@@ -1,0 +1,47 @@
+<html>
+<script language="JavaScript">
+var num=8;
+var minSize=64;
+var maxSize=128;
+var minSpeed=4;
+var maxSpeed=16;
+var heartX=new Array(num);
+var heartY=new Array(num);
+var heartSize=new Array(num);
+var heartSpeed=new Array(num);
+for(var i=0;i<num;i++)
+{
+document.write('<div id="heart'+i+'" style="position:absolute;"><nobr><tt><b>❤</b></tt></nobr></div>');
+heartSize[i]=Math.floor(Math.random()*(maxSize-minSize))+minSize;
+heartX[i]=Math.floor(Math.random()*((document.body.clientWidth-heartSize[i]*5)));
+heartY[i]=Math.floor(Math.random()*((document.body.clientHeight-heartSize[i]*3)));
+heartSpeed[i]=Math.floor(Math.random()*(maxSpeed-minSpeed))+minSpeed;
+document.all("heart"+i).style.fontSize=heartSize[i];
+document.all("heart"+i).style.color=('lightpink');
+document.all("heart"+i).style.left=heartX[i];
+document.all("heart"+i).style.top=heartY[i];
+}
+function moveheart()
+{
+for(var i=0;i<num;i++)
+{
+heartX[i]-=heartSpeed[i];
+heartY[i]-=heartSpeed[i];
+if(heartX[i]<=-heartSize[i]*5)
+{
+heartSize[i]=Math.floor(Math.random()*(maxSize-minSize))+minSize;
+heartX[i]=document.body.clientWidth;
+heartY[i]=Math.floor(Math.random()*((document.body.clientHeight-heartSize[i]*3)));
+heartSpeed[i]=Math.floor(Math.random()*(maxSpeed-minSpeed))+minSpeed;
+document.all("heart"+i).style.fontSize=heartSize[i];
+document.all("heart"+i).style.color=('lightpink');
+document.all("heart"+i).style.top=heartY[i];
+}
+document.all("heart"+i).style.left=heartX[i];
+}
+}
+setInterval(moveheart,10);
+</script>
+<!---560X315-->
+<center><iframe width="840" height="567" src="https://www.youtube.com/embed/gvSeLq-3Azg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay='1'; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+</html>
